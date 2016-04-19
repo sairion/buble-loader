@@ -3,10 +3,13 @@
 var buble = require('buble');
 
 module.exports = function BubleLoader(source, inputSourceMap) {
-    var transformed = buble.transform(source);
+    var transformed = buble.transform(source, {
+        transforms: {
+            modules: false
+        }
+    });
 
     this.cacheable && this.cacheable();
-    this.value = source;
 
     return transformed.code;
 };
