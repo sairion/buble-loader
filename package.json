@@ -1,0 +1,31 @@
+{
+  "name": "buble-loader",
+  "version": "0.1.0",
+  "description": "lightweight ES2015 source loader for Webpack using Buble",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/loader-test"
+  },
+  "author": "Jaeho Lee <me@jaeholee.org>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sairion/buble-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "buble",
+    "ES2015",
+    "ES6"
+  ],
+  "bugs": {
+    "url": "https://github.com/sairion/buble-loader/issues"
+  },
+  "peerDependencies": {
+    "buble": "^0.5.4",
+    "webpack": "1 || ^2.1.0-beta"
+  },
+  "devDependencies": {
+    "object-assign": "^4.0.1"
+  }
+}
