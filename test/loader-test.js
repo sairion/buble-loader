@@ -14,6 +14,7 @@ var baseConfig = {
     path: tempDir,
     filename: '[id].js',
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {
