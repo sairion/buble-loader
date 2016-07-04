@@ -1,12 +1,14 @@
 'use strict';
 
 module.exports = {
-    /*
-    // NOT WORKING
-    objectDestructuring({ a, b, c } = {}) {
-        return [a, b, c];
+
+    objectDestructuring({ a, b, c } = {a: 1, b: '2', c: null}) {
+        console.assert(a === 1);
+        console.assert(b === '2');
+        console.assert(c === null);
+
+        return 'objectDestructuring(): ok';
     },
-    */
     blockScopingBindings() {
         let a = 1;
         {
