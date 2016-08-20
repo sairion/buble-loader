@@ -3,12 +3,39 @@
 var buble = require('buble');
 var path = require('path');
 
+function BubleError (err) {
+  Error.call(this);
+  Error.captureStackTrace(this, BubleError);
+
+  this.name = 'BubleLoaderError';
+  this.message = ['', err.snippet, err.message].join('\n');
+  this.hideStack = true;
+  this.error = err;
+}
+
+BubleError.prototype = Object.create(Error.prototype);
+BubleError.prototype.constructor = BubleError;
+
+function handleError (err) {
+    if (err.name === 'CompileError') {
+        throw new BubleError(err);
+    } else {
+        throw err;
+    }
+}
+
 module.exports = function BubleLoader(source, inputSourceMap) {
-    var transformed = buble.transform(source, {
-        transforms: {
-            modules: false
-        }
-    });
+    var transformed;
+    try {
+        transformed = buble.transform(source, {
+            transforms: {
+                modules: false
+            }
+        });
+    } catch (err) {
+        handleError(err);
+    }
+
     var resourcePath = this.resourcePath;
 
     transformed.map.file = resourcePath;
