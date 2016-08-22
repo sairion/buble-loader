@@ -1,8 +1,6 @@
 'use strict';
 
-var fs = require('fs');
 var path = require('path');
-var assign = require('object-assign');
 var webpack = require('webpack');
 
 var tempDir = path.resolve(__dirname, './temp/');
