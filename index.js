@@ -2,6 +2,7 @@
 
 var buble = require('buble');
 var path = require('path');
+var loaderUtils = require('loader-utils');
 
 function BubleError (err) {
   Error.call(this);
@@ -25,13 +26,14 @@ function handleError (err) {
 }
 
 module.exports = function BubleLoader(source, inputSourceMap) {
+    var loaderOptions = loaderUtils.parseQuery(this.query);
     var transformed;
     try {
-        transformed = buble.transform(source, {
+        transformed = buble.transform(source, Object.assign({
             transforms: {
                 modules: false
             }
-        });
+        }, loaderOptions));
     } catch (err) {
         handleError(err);
     }

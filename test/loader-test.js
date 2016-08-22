@@ -19,6 +19,9 @@ var baseConfig = {
       {
         test: /\.js$/,
         loader: loader,
+        query: {
+          objectAssign: 'Object.assign'
+        },
         exclude: /node_modules/,
       },
     ],

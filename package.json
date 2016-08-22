@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "object-assign": "^4.0.1"
+  },
+  "dependencies": {
+    "loader-utils": "^0.2.15"
   }
 }

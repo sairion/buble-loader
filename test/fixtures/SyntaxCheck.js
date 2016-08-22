@@ -38,4 +38,9 @@ module.exports = {
 
         return 'untaggedTemplateString(): ok';
     },
+    objectAssign() {
+        const x = { a: 1, b: 2 };
+        const obj = { ...x };
+        return 'objectAssign(): ok';
+    }
 };
