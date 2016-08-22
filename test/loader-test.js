@@ -29,5 +29,6 @@ var baseConfig = {
 webpack(baseConfig, function(err, stats) {
   if (stats.compilation.errors.length > 0) {
     console.error(stats.compilation.errors[0].message);
+    process.exit(1);
   }
 });
