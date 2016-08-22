@@ -17,7 +17,7 @@ BubleError.prototype = Object.create(Error.prototype);
 BubleError.prototype.constructor = BubleError;
 
 function handleError (err) {
-    if (err.name === 'CompileError') {
+    if (err.name === 'CompileError' || err.name === 'SyntaxError') {
         throw new BubleError(err);
     } else {
         throw err;
