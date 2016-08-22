@@ -4,6 +4,23 @@ This package allows you to transpile ES2015 source using [buble](https://gitlab.
 
 note: This is almost-working prototype. Everything is immature. If you want something to be fixed, freely send PR or post issues!
 
-## installation
+## Installation
 
-    npm install buble-loader buble --save-dev
+    npm install --save-dev buble-loader buble
+
+## Usage
+
+Add this to your `webpack.config.js`
+
+    module: {
+      loaders: [
+        {
+          test: /.js$/,
+          loaders: 'buble',
+          include: path.join(__dirname, 'src'),
+          query: {
+            objectAssign: 'Object.assign'
+          }
+        }
+      ]
+    }
