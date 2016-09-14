@@ -33,7 +33,7 @@ module.exports = function BubleLoader(source, inputSourceMap) {
             transforms: {
                 modules: false
             }
-        }, loaderOptions));
+        }, this.options.buble, loaderOptions));
     } catch (err) {
         handleError(err);
     }
