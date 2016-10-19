@@ -22,7 +22,7 @@
     "url": "https://github.com/sairion/buble-loader/issues"
   },
   "peerDependencies": {
-    "buble": "^0.13.0",
+    "buble": "^0.14.0",
     "webpack": "1 || ^2.1.0-beta"
   },
   "devDependencies": {
