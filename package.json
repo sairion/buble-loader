@@ -23,7 +23,7 @@
   },
   "peerDependencies": {
     "buble": "^0.14.0",
-    "webpack": "1 || ^2.1.0-beta"
+    "webpack": "^2.1.0-beta"
   },
   "devDependencies": {
     "object-assign": "^4.0.1"
