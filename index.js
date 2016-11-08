@@ -3,6 +3,7 @@
 var buble = require('buble');
 var path = require('path');
 var loaderUtils = require('loader-utils');
+var webpackPkg = require('webpack/package');
 
 function BubleError (err) {
   Error.call(this);
@@ -26,6 +27,16 @@ function handleError (err) {
 }
 
 module.exports = function BubleLoader(source, inputSourceMap) {
+    // Warning for Webpack 1 users
+    // @see https://github.com/sairion/buble-loader/issues/15
+    if (parseInt(webpackPkg.version[0], 10) < 2) {
+        console.log([
+          '[WARNING]: It appears that you are using Webpack 1.',
+          'Buble doesn\'t transpile import/export statements.',
+          'To transpile import/export statements, you must upgrade to Webpack 2.'
+         ].join(' '));
+    }
+  
     var loaderOptions = loaderUtils.parseQuery(this.query);
     var transformed;
     try {
