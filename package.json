@@ -29,6 +29,7 @@
     "object-assign": "^4.0.1"
   },
   "dependencies": {
-    "loader-utils": "^0.2.15"
+    "loader-utils": "^0.2.15",
+    "es6-module-crosspiler": "^2.0.1"
   }
 }

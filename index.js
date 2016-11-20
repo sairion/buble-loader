@@ -3,6 +3,7 @@
 var buble = require('buble');
 var path = require('path');
 var loaderUtils = require('loader-utils');
+var webpackPkg = require('webpack/package');
 
 function BubleError (err) {
   Error.call(this);
@@ -25,6 +26,19 @@ function handleError (err) {
     }
 }
 
+function transformES6Modules (input) {
+    var recast = require('recast');
+    var esprima = require('esprima-fb');
+    var Module = require('es6-module-crosspiler');
+
+    var ast = recast.parse(input, {
+        esprima: esprima
+    })
+    var m = Module(ast);
+    ast = m.transform(ast);
+    return recast.print(ast).code;
+}
+
 module.exports = function BubleLoader(source, inputSourceMap) {
     var loaderOptions = loaderUtils.parseQuery(this.query);
     var transformed;
@@ -34,6 +48,10 @@ module.exports = function BubleLoader(source, inputSourceMap) {
                 modules: false
             }
         }, this.options.buble, loaderOptions));
+
+        if (parseInt(webpackPkg.version[0], 10) < 2) {
+            transformed.code = transformES6Modules(transformed.code);
+        }
     } catch (err) {
         handleError(err);
     }
