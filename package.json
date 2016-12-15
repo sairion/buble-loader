@@ -21,14 +21,12 @@
   "bugs": {
     "url": "https://github.com/sairion/buble-loader/issues"
   },
-  "peerDependencies": {
-    "buble": "^0.14.0",
-    "webpack": "1 || ^2.1.0-beta"
-  },
   "devDependencies": {
     "object-assign": "^4.0.1"
   },
   "dependencies": {
-    "loader-utils": "^0.2.15"
+    "buble": "^0.15.0",
+    "loader-utils": "^0.2.15",
+    "webpack": "*"
   }
 }
