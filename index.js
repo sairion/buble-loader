@@ -26,7 +26,7 @@ function handleError (err) {
 }
 
 module.exports = function BubleLoader(source, inputSourceMap) {
-    var loaderOptions = loaderUtils.parseQuery(this.query);
+    var loaderOptions = typeof this.query === 'string' ? loaderUtils.parseQuery(this.query) : this.query;
     var transformed;
     try {
         transformed = buble.transform(source, Object.assign({
