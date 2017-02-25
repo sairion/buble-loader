@@ -1,6 +1,6 @@
 {
   "name": "buble-loader",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "lightweight ES2015 source loader for Webpack using Buble",
   "main": "index.js",
   "scripts": {
