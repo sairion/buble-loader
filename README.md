@@ -16,7 +16,7 @@ module: {
   loaders: [
     {
       test: /.js$/,
-      loaders: 'buble',
+      loaders: 'buble-loader',
       include: path.join(__dirname, 'src'),
       query: {
         objectAssign: 'Object.assign'
