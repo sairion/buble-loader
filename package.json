@@ -24,9 +24,11 @@
   "devDependencies": {
     "object-assign": "^4.0.1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "buble": "^0.15.0",
-    "loader-utils": "^0.2.15",
-    "webpack": "*"
+    "webpack": "*"    
+  },
+  "dependencies": {
+    "loader-utils": "^0.2.15"
   }
 }
