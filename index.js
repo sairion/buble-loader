@@ -26,14 +26,14 @@ function handleError (err) {
 }
 
 module.exports = function BubleLoader(source, inputSourceMap) {
-    var loaderOptions = typeof this.query === 'string' ? loaderUtils.parseQuery(this.query) : this.query;
+	var loaderOptions = loaderUtils.getOptions(this);
     var transformed;
     try {
         transformed = buble.transform(source, Object.assign({
             transforms: {
                 modules: false
             }
-        }, this.options.buble, loaderOptions));
+        }, loaderOptions));
     } catch (err) {
         handleError(err);
     }

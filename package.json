@@ -26,9 +26,9 @@
   },
   "peerDependencies": {
     "buble": "^0.15.0",
-    "webpack": "*"    
+    "webpack": "*"
   },
   "dependencies": {
-    "loader-utils": "^0.2.15"
+    "loader-utils": "^1.1.0"
   }
 }
