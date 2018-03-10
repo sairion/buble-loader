@@ -15,7 +15,7 @@ Add this to your `webpack.config.js`
 module: {
   loaders: [
     {
-      test: /.js$/,
+      test: /\.js$/,
       loaders: 'buble-loader',
       include: path.join(__dirname, 'src'),
       query: {
