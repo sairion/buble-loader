@@ -1,6 +1,6 @@
 {
   "name": "buble-loader",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "lightweight ES2015 source loader for Webpack using Buble",
   "main": "index.js",
   "scripts": {
@@ -16,19 +16,17 @@
     "webpack",
     "buble",
     "ES2015",
-    "ES6"
+    "ES6",
+    "loader"
   ],
   "bugs": {
     "url": "https://github.com/sairion/buble-loader/issues"
   },
-  "devDependencies": {
-    "object-assign": "^4.0.1"
-  },
-  "peerDependencies": {
-    "buble": "^0.15.0",
-    "webpack": "*"
-  },
   "dependencies": {
-    "loader-utils": "^1.1.0"
+    "loader-utils": "^1.1.0",
+    "buble": "*"
+  },
+  "devDependencies": {
+    "webpack": "*"
   }
 }

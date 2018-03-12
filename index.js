@@ -1,49 +1,35 @@
-'use strict';
+/* eslint-disable no-invalid-this */
+const buble = require('buble'),
+	path = require('path'),
+	loaderUtils = require('loader-utils');
 
-var buble = require('buble');
-var path = require('path');
-var loaderUtils = require('loader-utils');
-
-function BubleError (err) {
-  Error.call(this);
-  Error.captureStackTrace(this, BubleError);
-
-  this.name = 'BubleLoaderError';
-  this.message = ['', err.snippet, err.message].join('\n');
-  this.hideStack = true;
-  this.error = err;
+class BubleError extends Error {
+	constructor(err) {
+		super();
+		Error.captureStackTrace(this, this.constructor);
+		this.name = 'BubleLoaderError';
+		this.message = ['', err.snippet, err.message].join('\n');
+		this.error = err;
+	}
 }
 
-BubleError.prototype = Object.create(Error.prototype);
-BubleError.prototype.constructor = BubleError;
+module.exports = function(source) {
+	const config = loaderUtils.getOptions(this);
+	config.transforms = Object.assign({}, config.transforms || {}, { modules: false });
+	let output;
+	try {
+		output = buble.transform(source, config);
+	}
+	catch (err) {
+		throw err.name === 'CompileError' || err.name === 'SyntaxError' ? new BubleError(err) : err;
+	}
 
-function handleError (err) {
-    if (err.name === 'CompileError' || err.name === 'SyntaxError') {
-        throw new BubleError(err);
-    } else {
-        throw err;
-    }
-}
+	const resourcePath = this.resourcePath;
 
-module.exports = function BubleLoader(source, inputSourceMap) {
-	var loaderOptions = loaderUtils.getOptions(this);
-    var transformed;
-    try {
-        transformed = buble.transform(source, Object.assign({
-            transforms: {
-                modules: false
-            }
-        }, loaderOptions));
-    } catch (err) {
-        handleError(err);
-    }
+	output.map.file = resourcePath;
+	output.map.sources[0] = path.relative(process.cwd(), resourcePath);
+	output.map.sourceRoot = process.cwd();
 
-    var resourcePath = this.resourcePath;
-
-    transformed.map.file = resourcePath;
-    transformed.map.sources[0] = path.relative(process.cwd(), resourcePath);
-    transformed.map.sourceRoot = process.cwd();
-
-    this.cacheable && this.cacheable();
-    this.callback(null, transformed.code, transformed.map);
+	if (this.cacheable) this.cacheable();
+	this.callback(null, output.code, output.map);
 };

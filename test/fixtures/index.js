@@ -1,4 +1,4 @@
-var SyntaxCheck = require('./SyntaxCheck');
+const SyntaxCheck = require('./SyntaxCheck');
 
 console.log(SyntaxCheck.objectDestructuring());
 console.log(SyntaxCheck.blockScopingBindings());
