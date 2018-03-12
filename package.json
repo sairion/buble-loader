@@ -23,10 +23,13 @@
     "url": "https://github.com/sairion/buble-loader/issues"
   },
   "dependencies": {
-    "loader-utils": "^1.1.0",
-    "buble": "*"
+    "loader-utils": "^1.1.0"
   },
   "devDependencies": {
-    "webpack": "*"
+    "webpack": "*",
+    "buble": "*"
+  },
+  "peerDependencies": {
+    "buble": "*"
   }
 }
