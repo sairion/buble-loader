@@ -4,7 +4,7 @@ This package allows you to transpile ES2015 source using [buble](https://github.
 
 ## Installation
 ```bash
-npm i -D mrTimofey/buble-loader buble
+npm i -S buble-loader buble
 ```
 ## Usage
 
