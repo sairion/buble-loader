@@ -13,7 +13,7 @@ Add something like this to your `webpack.config.js`
 module: {
   rules: [
     {
-      test: /.js$/,
+      test: /\.js$/,
       loader: 'buble-loader',
       include: path.join(__dirname, 'src'),
       options: {
