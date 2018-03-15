@@ -2,23 +2,21 @@
 
 This package allows you to transpile ES2015 source using [buble](https://github.com/Rich-Harris/buble). See [Buble project website](https://buble.surge.sh/guide/) to check out supported features.
 
-note: This is almost-working prototype. Everything is immature. If you want something to be fixed, freely send PR or post issues!
-
 ## Installation
 ```bash
-npm install --save-dev buble-loader buble
+npm i -S buble-loader buble
 ```
 ## Usage
 
-Add this to your `webpack.config.js`
+Add something like this to your `webpack.config.js`
 ```js
 module: {
-  loaders: [
+  rules: [
     {
       test: /\.js$/,
-      loaders: 'buble-loader',
+      loader: 'buble-loader',
       include: path.join(__dirname, 'src'),
-      query: {
+      options: {
         objectAssign: 'Object.assign'
       }
     }

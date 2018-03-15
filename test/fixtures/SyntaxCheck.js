@@ -14,7 +14,7 @@ module.exports = {
         {
             let a = 2;
         }
-        console.assert(a === 1);
+		console.assert(a === 1);
 
         const b = 10;
         // b = 100; // throws error

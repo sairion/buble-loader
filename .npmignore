@@ -1,4 +1,6 @@
 *.log
 node_modules
 test/
-
+.idea
+package-lock.json
+yarn.lock
